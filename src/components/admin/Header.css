@@ -1,0 +1,114 @@
+/* =================================== */
+/* HEADER GENERAL Y ESTRUCTURA FLEXBOX */
+/* =================================== */
+
+.header-admin {
+  /* Fondo del header: Usamos la variable para respetar el Dark Mode */
+  background-color: var(--bg-header-footer);
+  
+  /* Layout: Apila las filas verticalmente */
+  display: flex;
+  flex-direction: column;
+  
+  /* Padding y Bordes */
+  padding: 15px 25px; 
+  border-bottom: 2px solid var(--input-border); /* Usamos la variable para el borde */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.4s;
+}
+
+/* Contenedor de la Fila Superior (Título y Controles) */
+.header-main-row {
+  display: flex;
+  justify-content: space-between; /* Título a la izquierda, Controles a la derecha */
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px; /* Espacio entre la fila superior y la navegación inferior */
+}
+
+/* =================================== */
+/* ELEMENTOS INDIVIDUALES              */
+/* =================================== */
+
+.header-title {
+  /* Ajuste Fino 1: Título más grande (tamaño de 1.8rem) */
+  margin: 0;
+  font-size: 3.5rem;
+  color: var(--h2-color); /* Usamos la variable para el color del texto */
+}
+
+.header-controls {
+  /* Contenedor para alinear Logout y DarkModeToggle */
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-info {
+  /* Ajuste Fino 3: Saludo un poco más grande (1.1rem) */
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color); /* Usamos la variable para el color del texto */
+}
+
+.logout-btn {
+  /* Ajuste Fino 2: Botón Cerrar Sesión más grande */
+  padding: 10px 18px; /* Aumentado de 8px 15px */
+  font-size: 1rem; /* Aumentado de 0.9rem */
+  font-weight: bold;
+  
+  /* Estilos de color y efecto */
+  background-color: #dc3545; /* Rojo base */
+  color: white;
+  border: none;
+  border-radius: 6px; /* Borde redondeado */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logout-btn:hover:not(:disabled) {
+  background-color: #c82333; /* Rojo más oscuro al hover */
+  transform: scale(1.03); /* Efecto sutil de crecimiento al hover */
+}
+
+.logout-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =================================== */
+/* 3. NAVEGACIÓN (DEBAJO DEL TÍTULO)   */
+/* =================================== */
+
+/* Aseguramos que la navegación (AdminNav) ocupe todo el ancho debajo */
+.admin-nav-area {
+  width: 100%;
+}
+
+/* =================================== */
+/* MEDIA QUERY para RESPONSIVE         */
+/* =================================== */
+
+@media (max-width: 600px) {
+  .header-admin {
+    padding: 10px 15px;
+  }
+  
+  .header-main-row {
+    /* Apila el título y los controles en pantallas pequeñas */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .header-title {
+    font-size: 1.5rem; /* El título se reduce un poco */
+  }
+
+  .header-controls {
+    /* Los controles ocupan todo el ancho y se separan (Logout a la izquierda, DarkMode a la derecha) */
+    width: 100%;
+    justify-content: space-between;
+  }
+}

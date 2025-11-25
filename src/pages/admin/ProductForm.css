@@ -1,0 +1,156 @@
+.product-form-container {
+  background-color: var(--form-bg);
+  color: var(--text-color);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 4rem auto; /* Espacio arriba y abajo */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Campos de entrada */
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  /*padding: 0.6rem;*/
+  padding: 0.2rem;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  background-color: var(--bg-body);
+  color: var(--text-color);
+}
+
+textarea {
+  min-height: 80px; 
+  resize: vertical;
+}
+
+/* Etiquetas y grupos */
+.form-group {
+  margin-bottom: 0.1rem;
+}
+
+.form-group label {
+  display: block;
+ /* margin-bottom: 0.6rem;*/
+  font-weight: bold;
+  color: var(--text-color);
+  
+}
+
+/* Validación visual */
+.input-error {
+  border-color: red;
+}
+
+/* Radios */
+.radio-group {
+  display: flex;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+}
+
+/* Vista previa de imagen */
+.previe {
+  margin: 0.5rem 0;
+  text-align: left;
+}
+
+.previe-img {
+  max-width: 200px;
+  border-radius: 6px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Botones */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem; /* separación entre botones */
+  margin-top: 2rem;
+  padding: 0 1rem; /* separación respecto a los bordes */
+}
+
+.submit-btn {
+  flex: 1;
+  max-width: 200px;
+  background-color: var(--btn-submit-bg);
+  color: var(--btn-submit-text);
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #689f38; 
+  transform: translateY(-1px); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.boton-verde {
+    background-color: #71b100;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    padding: 1rem 3rem;
+    text-align: center;
+    text-decoration: none;
+}
+
+.boton-verde:hover {
+    background-color: #619800;
+    cursor: pointer;
+}
+
+.redondeado {
+    border-radius: 1rem;
+    padding: 1.5rem 3rem;
+    margin: 2.5rem 0rem;
+    align-self: center;
+}
+
+
+/* Validación visual */
+.input-error {
+  border-color: red;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
+}
+
+/* Sugerencias de autocompletado */
+.sugerencias-lista {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  max-height: 120px;
+  overflow-y: auto;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+}
+
+.sugerencias-lista li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.sugerencias-lista li:hover {
+  background-color: #e0f0ff;
+}

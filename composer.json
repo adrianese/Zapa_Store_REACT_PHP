@@ -1,0 +1,17 @@
+{
+    "name": "sac/react-cru-dphp",
+    "autoload": {
+        "psr-4": {
+            "Sac\\ReactCruDphp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Adrianese",
+            "email": "adrianseri@hotmail.com"
+        }
+    ],
+    "require": {
+        "intervention/image": "^2.7"
+    }
+}

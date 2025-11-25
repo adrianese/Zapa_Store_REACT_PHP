@@ -1,0 +1,12 @@
+# Bloquear acceso a .env
+<Files ".env">
+  Order allow,deny
+  Deny from all
+</Files>
+RewriteEngine On
+RewriteRule ^\.env - [F,L]
+
+# React Router fallback (si frontend está en mismo hosting)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]

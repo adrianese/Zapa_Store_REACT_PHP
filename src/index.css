@@ -1,0 +1,188 @@
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    font-family: 'Lato', sans-serif;  
+    font-size: 1.6rem;
+    line-height: 1.8; 
+}
+
+/*contenedor basico */
+.contenedor {
+    width: 100%;
+   /* max-width: 120rem;*/
+    min-height: 15rem;
+   /* margin: 0 auto;*/
+}
+/* Productos
+.seccion{
+    min-height: 10rem;
+  
+    background-color: hsla(0, 0%, 100%, 0.8);
+}*/
+img,
+picture {
+    width: 100%;
+    display: block;
+}
+.contacto-img {
+    width: 60%;
+    display: block;
+    margin: auto;
+}
+/* FONTS */
+h1, h2, h3 {
+    font-family: 'Lato', sans-serif;
+    margin: 1.5rem 0;
+    font-weight: 300;
+    text-align: center;
+    color: #110f0f;
+}
+h1 {
+    font-size: 3.8rem;
+}
+h2 {
+    font-size: 3.4rem;
+}
+h3 {
+    font-size: 3rem;
+}
+h4 {
+    font-size: 2.6rem;
+}
+
+/* video inicio */
+video{
+    width: 100%;
+    display: block;
+}
+.contenedor-productos{
+    margin: 3rem auto;
+    width: 92%;
+
+}
+
+
+   /* Media query para cambiar fondo por rangos de ancho hasta 480px  */
+@media (max-width: 480px) {
+    body {
+        background-color: #fce8ca;
+    }
+    .barra{
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+    }
+    .contenedor-productos{
+  /*  background-color: #a4a4a4;*/
+    display:grid;
+    grid-template-columns:repeat(1,1fr);
+    gap:1rem;
+    
+    }
+}
+
+
+
+/* Tablets: entre 481px y 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .contenedor-productos{
+        display:grid;
+        gap:1rem;
+        grid-template-columns:repeat(2,1fr);
+        }
+    .anuncio{
+        background-color:#eee;
+        border:1px solid #c8c8c8;
+        margin-bottom:2rem;
+    }
+    .contenido-anuncio{
+        padding:2rem;
+    } 
+}
+ /*Estos estilos se aplicarán cuando el ancho de la pantalla sea mayor o igual a 768px */
+@media (min-width: 769px) {
+    a{
+       font-size: 1.8rem;
+    }
+    .contenedor-productos{
+        display:grid;
+        gap:1rem;
+        grid-template-columns:repeat(3,1fr);
+    }
+    .anuncio{
+        background-color:#eee;
+        border:1px solid #c8c8c8;
+        margin-bottom:2rem;
+    }
+    .contenido-anuncio{
+        padding:2rem;
+    } 
+    .input-buscador{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-items: baseline;
+    max-block-size: max-content;
+    gap: 2rem;
+}
+}
+/* Extra desktop: desde 951px, 4 columnas */
+@media (min-width: 950px) {
+    body {
+      background-color: #fce8ca;
+    }
+    .contenedor-productos {
+    grid-template-columns: repeat(4, 1fr);
+    
+    }
+}
+
+
+
+
+.flotante{
+    width: 4.5rem;
+    height: 4.5rem;
+    position: fixed;
+    bottom: 18rem;
+    right: 1.2rem;
+    background-color: #71b100;
+    border-radius: 50%;
+    animation: mostrarFlecha auto linear;
+   /* animation-timeline: scroll(root);*/
+}
+.flotante img{
+    width: 2.4rem;
+    margin: .7rem 1.1rem 0;
+    filter: invert(20%);  
+}
+.flotante {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  transform: translateY(20px); /* parte de abajo */
+}
+.flotante.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+
+
+.div-base {
+    background-color: #fce8ca;
+    min-height: 27rem;
+    padding: 6rem;
+    margin-bottom: -3rem;
+}
+
+

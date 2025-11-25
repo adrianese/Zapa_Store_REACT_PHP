@@ -1,0 +1,97 @@
+
+-- Generar talles para producto con id=1
+CALL generar_talles(1);
+(esto es aparte)
+
+DELIMITER //
+CREATE PROCEDURE generar_talles(IN producto INT)
+BEGIN
+  DECLARE talle INT;
+
+  -- Borramos talles previos del producto
+  DELETE FROM producto_talles WHERE id_producto = producto;
+
+  -- Creamos tabla temporal con talles 35 a 45
+  CREATE TEMPORARY TABLE tmp_talles (talle INT PRIMARY KEY);
+  SET talle = 35;
+  WHILE talle <= 45 DO
+    INSERT INTO tmp_talles VALUES (talle);
+    SET talle = talle + 1;
+  END WHILE;
+
+  -- Insertamos talles con stock aleatorio controlado
+  INSERT INTO producto_talles (id_producto, talle, stock)
+  SELECT producto,
+         t.talle,
+         CASE FLOOR(RAND() * 5)
+           WHEN 0 THEN 10
+           WHEN 1 THEN 5
+           WHEN 2 THEN 1
+           WHEN 3 THEN 0
+           ELSE 10
+         END AS stock
+  FROM tmp_talles t;
+
+  DROP TEMPORARY TABLE tmp_talles;
+END //
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE generar_talles_rediseñado(IN producto INT)
+BEGIN
+    DECLARE talle INT;
+
+    -- 1. Borramos talles previos del producto
+    DELETE FROM producto_talles WHERE id_producto = producto;
+
+    -- 2. Creamos tabla temporal con los 11 talles (35 a 45)
+    CREATE TEMPORARY TABLE tmp_talles (
+        talle INT PRIMARY KEY,
+        rnd_order DOUBLE -- Columna para orden aleatorio
+    );
+    
+    SET talle = 35;
+    WHILE talle <= 45 DO
+        -- Insertamos el talle con un valor aleatorio para el orden
+        INSERT INTO tmp_talles VALUES (talle, RAND());
+        SET talle = talle + 1;
+    END WHILE;
+
+    -- 3. Creamos una tabla temporal con la distribución de stock deseada (11 filas en total)
+    CREATE TEMPORARY TABLE tmp_stock_distribution (
+        stock INT,
+        rnd_order DOUBLE -- Columna para orden aleatorio
+    );
+
+    -- 1 talle con 0 unidades
+    INSERT INTO tmp_stock_distribution VALUES (0, RAND());
+    
+    -- 2 talles con 1 unidad
+    INSERT INTO tmp_stock_distribution VALUES (1, RAND()), (1, RAND());
+    
+    -- 4 talles con 5 unidades
+    INSERT INTO tmp_stock_distribution VALUES (5, RAND()), (5, RAND()), (5, RAND()), (5, RAND());
+    
+    -- 4 talles con 10 unidades
+    INSERT INTO tmp_stock_distribution VALUES (10, RAND()), (10, RAND()), (10, RAND()), (10, RAND());
+
+    -- 4. Insertamos los talles y el stock combinando de forma aleatoria
+    INSERT INTO producto_talles (id_producto, talle, stock)
+    SELECT 
+        producto,
+        t.talle,
+        s.stock
+    FROM 
+        (SELECT talle, ROW_NUMBER() OVER (ORDER BY rnd_order) AS rn FROM tmp_talles) AS t -- Talles ordenados aleatoriamente
+    INNER JOIN 
+        (SELECT stock, ROW_NUMBER() OVER (ORDER BY rnd_order) AS rn FROM tmp_stock_distribution) AS s -- Stock ordenado aleatoriamente
+        ON t.rn = s.rn; -- Unimos por el número de fila
+
+    -- 5. Eliminamos las tablas temporales (opcional, se eliminan al finalizar la sesión/conexión)
+    DROP TEMPORARY TABLE tmp_talles;
+    DROP TEMPORARY TABLE tmp_stock_distribution;
+
+END //
+
+DELIMITER ;

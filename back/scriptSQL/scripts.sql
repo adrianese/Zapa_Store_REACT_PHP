@@ -1,0 +1,75 @@
+-- =========================
+-- Tabla: productos
+-- =========================
+CREATE TABLE productos (
+    id_producto INT AUTO_INCREMENT PRIMARY KEY,
+    marca VARCHAR(100) NOT NULL,
+    modelo VARCHAR(50) NOT NULL,
+    imagen VARCHAR(255),
+    actividad VARCHAR(50),
+    disponible BOOLEAN DEFAULT TRUE,
+    precio DECIMAL(10,2) NOT NULL
+);
+
+-- =========================
+-- Tabla: producto_talles
+-- =========================
+CREATE TABLE producto_talles (
+    id_talle INT AUTO_INCREMENT PRIMARY KEY,
+    id_producto INT NOT NULL,
+    talle INT NOT NULL,
+    stock INT NOT NULL DEFAULT 0,
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+);
+
+-- =========================
+-- Tabla: producto_talles MEJORADA
+-- =========================
+
+
+CREATE TABLE producto_talles (
+    id_talle INT AUTO_INCREMENT PRIMARY KEY,
+    id_producto INT NOT NULL,
+    talle INT NOT NULL,
+    stock INT NOT NULL DEFAULT 0,
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto) ON DELETE CASCADE,
+    UNIQUE KEY uq_producto_talle (id_producto, talle)
+);
+-- =========================
+-- Tabla: usuarios
+-- =========================
+CREATE TABLE usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    rol ENUM('usuario','admin') DEFAULT 'usuario'
+);
+
+-- =========================
+-- Tabla: pedidos
+-- =========================
+CREATE TABLE pedidos (
+    id_pedido VARCHAR(50) PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    fecha DATE NOT NULL,
+    total DECIMAL(10,2) NOT NULL,
+    estado ENUM('pendiente','pagado','enviado','cancelado') DEFAULT 'pendiente',
+    factura VARCHAR(50),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
+
+-- =========================
+-- Tabla: pedido_detalle
+-- =========================
+CREATE TABLE pedido_detalle (
+    id_detalle INT AUTO_INCREMENT PRIMARY KEY,
+    id_pedido VARCHAR(50) NOT NULL,
+    id_producto INT NOT NULL,
+    talle INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+);
+
