@@ -6,8 +6,8 @@ header("Content-Type: application/json; charset=UTF-8");
 
 include "db.php";
 
-// NUEVA RUTA — imágenes van a:  /public/uploads/productos/
-$upload_dir = $_SERVER['DOCUMENT_ROOT'] . "/reactcrudphp/public/uploads/productos/";
+
+$upload_dir = $_SERVER['DOCUMENT_ROOT'] . "/public/uploads/productos/";
 
 // Crear carpeta si no existe
 if (!is_dir($upload_dir)) {

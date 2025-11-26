@@ -19,7 +19,7 @@ const Productos = () => {
   const navigate = useNavigate();
   const { carrito, setCarrito } = useContext(CarritoContext);
 
-  // 🔄 Scroll para mostrar flecha
+  // Scroll para mostrar flecha
   useEffect(() => {
     const handleScroll = () => {
       const umbral = document.documentElement.scrollHeight * 0.35;
@@ -71,7 +71,7 @@ const Productos = () => {
     obtenerProductos();
   }, []);
 
-  // 🛒 Agregar producto al carrito
+  //  Agregar producto al carrito
   const toggleCarrito = (producto, talle) => {
     if (!producto.disponible) {
       Swal.fire({

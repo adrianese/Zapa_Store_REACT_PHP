@@ -14,7 +14,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 // Forzar GD en InfinityFree
 Image::configure(['driver' => 'gd']);
 
-// NUEVA RUTA — imágenes van a:  /public/uploads/productos/
+
 $upload_dir = __DIR__ . "/../public/uploads/productos/";
 
 // Creo carpeta si no existe

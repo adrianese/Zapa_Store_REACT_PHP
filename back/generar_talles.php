@@ -17,8 +17,8 @@ if ($id_producto == 0 || empty($talles)) {
     exit;
 }
 
-// ✅ Usamos INSERT ... ON DUPLICATE KEY UPDATE
-// Asegúrate de tener una UNIQUE KEY en la tabla: (id_producto, talle)
+//  Uso INSERT ... ON DUPLICATE KEY UPDATE
+// Asegurarse de tener una UNIQUE KEY en la tabla: (id_producto, talle)
 $sql = "INSERT INTO producto_talles (id_producto, talle, stock) 
         VALUES (?, ?, ?)
         ON DUPLICATE KEY UPDATE stock = VALUES(stock)";

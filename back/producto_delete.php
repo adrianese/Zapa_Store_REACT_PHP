@@ -1,15 +1,15 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: DELETE, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 header("Content-Type: application/json; charset=UTF-8");
 
 include "db.php";
 
-// ✅ Ruta absoluta en disco
-$upload_dir = realpath(__DIR__ . "/../public/uploads/productos") . "/";
+$upload_dir = __DIR__ . "/../uploads/productos/";
 
-if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Recibir JSON desde el body
     $data = json_decode(file_get_contents("php://input"));
 
     if (isset($data->id_producto)) {
@@ -48,8 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
                         if (!unlink($old_path)) {
                             error_log("No se pudo borrar la imagen: $old_path");
                         }
-                    } else {
-                        error_log("Imagen no encontrada: $old_path");
                     }
                 }
 
@@ -66,4 +64,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
 } else {
     echo json_encode(["error" => true, "message" => "Método no permitido."]);
 }
-?>
