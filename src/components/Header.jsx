@@ -40,10 +40,10 @@ const Header = () => {
               Productos
             </NavLink>
             <NavLink
-              to="/nosotros"
+              to="/login"
               className={({ isActive }) => (isActive ? "activo" : "")}
             >
-              Nosotros
+              Login
             </NavLink>
             <NavLink
               to="/contacto"

@@ -11,7 +11,7 @@ const PedidosAdmin = () => {
     const fetchPedidos = async () => {
       try {
         const res = await fetch(
-          "http://localhost/ReactCRUDphp/back/pedidos.php"
+          "/back/pedidos.php"
         );
         if (!res.ok) throw new Error("Error al obtener pedidos");
         const data = await res.json();

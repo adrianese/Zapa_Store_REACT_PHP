@@ -4,11 +4,12 @@ No se recomienda su uso en aplicaciones reales sin una auditoría completa, prue
 
 Sitio Web:
 
-https://react-proyecto-xxxxxxxxxxxxxx-adrianeses-projects.vercel.app/
+https://zapa-store-react.infinityfreeapp.com/
 
-Sitio Web:
+GitHub: 
+https://github.com/adrianese/Zapa_Store_REACT_PHP
 
-https://react-proyecto-nu.vercel.app/
+
 
 # Proyecto E-commerce con React
 

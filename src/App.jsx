@@ -10,7 +10,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 // Páginas públicas
 import Inicio from "./pages/Inicio";
 import Productos from "./pages/Productos";
-import Nosotros from "./pages/Nosotros";
+//import Nosotros from "./pages/Nosotros";
 import Contacto from "./pages/Contacto";
 import Carrito from "./pages/Carrito";
 import Producto from "./pages/Producto";
@@ -52,10 +52,10 @@ function App() {
               }
             />
             <Route
-              path="/nosotros"
+              path="/login"
               element={
                 <UserLayout>
-                  <Nosotros />
+                  <Login />
                 </UserLayout>
               }
             />

@@ -22,7 +22,7 @@ const ProductForm = () => {
       if (id) {
         try {
           const response = await fetch(
-            `http://localhost/ReactCRUDphp/back/producto.php?id=${id}`
+            `/back/producto.php?id=${id}`
           );
           if (!response.ok) throw new Error("Error de red");
           const productData = await response.json();
@@ -64,8 +64,8 @@ const ProductForm = () => {
     e.preventDefault();
 
     const url = id
-      ? "http://localhost/ReactCRUDphp/back/producto_update.php"
-      : "http://localhost/ReactCRUDphp/back/producto_create.php";
+      ? "/back/producto_update.php"
+      : "/back/producto_create.php";
 
     // Validación especial para MARCA
     const isMarca = product.marca.toUpperCase() === "MARCA";

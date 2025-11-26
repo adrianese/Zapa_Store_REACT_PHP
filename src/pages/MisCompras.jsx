@@ -13,7 +13,7 @@ const MisCompras = () => {
 
       try {
         const res = await fetch(
-          `http://localhost/ReactCRUDphp/back/pedidos.php?id_usuario=${usuario.id_usuario}`
+          `/back/pedidos.php?id_usuario=${usuario.id_usuario}`
         );
         const data = await res.json();
         setPedidos(data || []);

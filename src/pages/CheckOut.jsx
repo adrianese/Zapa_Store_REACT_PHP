@@ -30,7 +30,7 @@ const Checkout = () => {
 
     try {
       const response = await fetch(
-        "http://localhost/ReactCRUDphp/back/pedido_create.php",
+        "/back/pedido_create.php",
         {
           method: "POST",
           headers: {

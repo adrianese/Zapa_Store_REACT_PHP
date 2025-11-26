@@ -101,7 +101,7 @@ const Carrito = () => {
 
     try {
       const response = await fetch(
-        "http://localhost/ReactCRUDphp/back/pedido_create.php",
+        "/back/pedido_create.php",
         {
           method: "POST",
           headers: {
@@ -114,7 +114,7 @@ const Carrito = () => {
       if (response.ok) {
         // Stock update
         const stockResponse = await fetch(
-          "http://localhost/ReactCRUDphp/back/stock_update.php",
+          "/back/stock_update.php",
           {
             method: "POST",
             headers: {

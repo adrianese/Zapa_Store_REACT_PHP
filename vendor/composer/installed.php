@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'sac/react-cru-dphp',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '56cc24cd29f33623e41510c3de76dab493ebff04',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -68,9 +68,9 @@
             'dev_requirement' => false,
         ),
         'sac/react-cru-dphp' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '56cc24cd29f33623e41510c3de76dab493ebff04',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

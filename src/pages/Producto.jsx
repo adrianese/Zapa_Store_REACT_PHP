@@ -12,7 +12,7 @@ function Producto() {
     const obtenerProducto = async () => {
       try {
         const res = await fetch(
-          `http://localhost/ReactCRUDphp/back/producto.php?id=${id}`
+          `/back/producto.php?id=${id}`
         );
         if (!res.ok) throw new Error(`Error HTTP: ${res.status}`);
         const data = await res.json();

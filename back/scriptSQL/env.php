@@ -1,3 +1,4 @@
+
 <?php
 function loadEnv($path) {
   if (!file_exists($path)) return;

@@ -17,7 +17,7 @@ const StockTalles = () => {
   const handleSaveTalles = async () => {
     try {
       const response = await fetch(
-        "http://localhost/ReactCRUDphp/back/generar_talles.php",
+        "/back/generar_talles.php",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -43,7 +43,7 @@ const StockTalles = () => {
     const fetchStock = async () => {
       try {
         const response = await fetch(
-          "http://localhost/ReactCRUDphp/back/producto.php"
+          "/back/producto.php"
         );
         if (!response.ok) throw new Error("Error al obtener los datos de stock");
         const data = await response.json();

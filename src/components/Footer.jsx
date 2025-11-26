@@ -9,7 +9,7 @@ function Footer() {
         <nav className="navegacion">
           <Link to="/">Inicio</Link>
           <Link to="/productos">Productos</Link>
-          <Link to="/nosotros">Nosotros</Link>
+          <Link to="/login">Login</Link>
           <Link to="/contacto">Contacto</Link>
         </nav>
       </div>

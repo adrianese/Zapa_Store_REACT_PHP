@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const res = await fetch(
-        "http://localhost/ReactCRUDphp/back/login.php",
+        "/back/login.php",
         {
           method: "POST",
           headers: {

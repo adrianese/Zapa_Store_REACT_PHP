@@ -20,7 +20,7 @@ const Register = () => {
 
     try {
       const response = await fetch(
-        "http://localhost/ReactCRUDphp/back/register.php",
+        "/back/register.php",
         {
           method: "POST",
           headers: {

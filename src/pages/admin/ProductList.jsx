@@ -16,7 +16,7 @@ const ProductList = () => {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          "http://localhost/ReactCRUDphp/back/producto.php"
+          "/back/producto.php"
         );
         if (!response.ok) {
           throw new Error("Error al obtener los productos");
@@ -37,7 +37,7 @@ const ProductList = () => {
   const handleDelete = async (id) => {
     try {
       const response = await fetch(
-        "http://localhost/ReactCRUDphp/back/producto_delete.php",
+        "/back/producto_delete.php",
         {
           method: "DELETE",
           headers: {
