@@ -32,7 +32,7 @@ function Footer() {
           </a>
 
           <a
-            href="https://github.com/adrianese/Zapa_Store_REACT_CRUD"
+            href="https://github.com/adrianese/Zapa_Store_REACT_PHP"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub de Adrianese"

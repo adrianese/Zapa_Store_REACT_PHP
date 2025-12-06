@@ -5,6 +5,8 @@ import ProductoCard from "../components/ProductoCard";
 import Buscador from "../components/Buscador";
 import ModalComparacion from "../components/ModalComparacion";
 import CarritoModal from "../components/CarritoModal";
+import Paginador from "../components/Paginador";
+
 import Swal from "sweetalert2";
 import "../components/ProductoCard.css";
 
@@ -14,6 +16,8 @@ const Productos = () => {
   const [productosFiltrados, setProductosFiltrados] = useState([]);
   const [seleccionados, setSeleccionados] = useState([]);
   const [mostrarModalComparacion, setMostrarModalComparacion] = useState(false);
+  const [paginaActual, setPaginaActual] = useState(1); // estado de página
+  const itemsPorPagina = 8; // cantidad de productos por página
   const [mostrarCarrito, setMostrarCarrito] = useState(false);
   const [mostrarFlecha, setMostrarFlecha] = useState(false);
   const navigate = useNavigate();
@@ -39,7 +43,7 @@ const Productos = () => {
   useEffect(() => {
     const obtenerProductos = async () => {
       try {
-         const respuesta = await fetch(`/back/producto.php`);
+         const respuesta = await fetch(`http://localhost/ReactCRUDphp/back/producto.php`);
   
         if (!respuesta.ok)
           throw new Error(`HTTP error! status: ${respuesta.status}`);
@@ -128,27 +132,41 @@ const Productos = () => {
     seleccionados.includes(p.id_producto)
   );
 
+  // Calcular productos visibles según página
+  const indexInicio = (paginaActual - 1) * itemsPorPagina;
+  const indexFin = indexInicio + itemsPorPagina;
+  const productosVisibles = productosFiltrados.slice(indexInicio, indexFin);
+
+
+
   return (
     <div className="seccion">
       <Buscador productos={productos} onFiltrar={setProductosFiltrados} />
 
-      <div className="contenedor-productos">
-        {productosFiltrados.map((producto) => (
-          <ProductoCard
-            key={producto.id_producto}
-            producto={{
-              ...producto,
-              imagen: `../../uploads/productos/${producto.imagen}`,
+   <div className="contenedor-productos">
+  {productosVisibles.map((producto) => (
+    <ProductoCard
+      key={producto.id_producto}
+      producto={{
+        ...producto,
+        imagen: `../../uploads/productos/${producto.imagen}`,
+      }}
+      seleccionado={seleccionados.includes(producto.id_producto)}
+      enCarrito={carrito.some(
+        (p) => p.id_producto === producto.id_producto
+      )}
+      onToggleCarrito={toggleCarrito}
+    />
+  ))}
+</div>
+       {/* Paginador */}
+      <Paginador
+        totalItems={productosFiltrados.length}
+        itemsPorPagina={itemsPorPagina}
+        paginaActual={paginaActual}
+        onPageChange={setPaginaActual}
+      />
 
-            }}
-            seleccionado={seleccionados.includes(producto.id_producto)}
-            enCarrito={carrito.some(
-              (p) => p.id_producto === producto.id_producto
-            )}
-            onToggleCarrito={toggleCarrito}
-          />
-        ))}
-      </div>
 
       {seleccionados.length >= 2 && (
         <button
