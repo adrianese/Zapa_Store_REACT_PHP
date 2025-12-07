@@ -43,8 +43,8 @@ const Productos = () => {
   useEffect(() => {
     const obtenerProductos = async () => {
       try {
-         const respuesta = await fetch(`http://localhost/ReactCRUDphp/back/producto.php`);
-  
+       //  const respuesta = await fetch(`http://localhost/ReactCRUDphp/back/producto.php`);
+         const respuesta = await fetch(`/back/producto.php`);
         if (!respuesta.ok)
           throw new Error(`HTTP error! status: ${respuesta.status}`);
         const data = await respuesta.json();
